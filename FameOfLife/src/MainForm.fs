@@ -1,15 +1,31 @@
-// FameOfLife : Copyright (C) 2023 Skywalker<j.karlsson@retrocoder.se>
-module Main
+﻿// FameOfLife : Copyright (C) 2023 Skywalker<j.karlsson@retrocoder.se>
+module MainForm
 
+open System.Drawing
 open System.Windows.Forms
 
-open MainForm
+type MainForm() as this =
+    inherit Form()
 
-[<EntryPoint>]
-let main argv =
-    use mainForm = new MainForm()
-    Application.Run(mainForm)
-    0
+    let label1 = new Label()
+
+    do this.initializeForm
+
+    member this.initializeForm =
+        this.Name <- "MainForm"
+        this.Text <- "FameOfLife"
+        this.FormBorderStyle <- FormBorderStyle.FixedDialog
+        this.MaximizeBox <- false
+        this.MinimizeBox <- false
+        this.StartPosition <- FormStartPosition.CenterScreen
+        this.ClientSize <- new Size(800, 600)
+
+        // label1
+        label1.Text <- "Conway's Game of line written in F#"
+        label1.Location <- new Point(5,2)
+        label1.AutoSize <- true
+
+        this.Controls.Add(label1)
 
 
 // License
@@ -29,3 +45,4 @@ let main argv =
 // 51 Franklin Street, Fifth Floor,
 // Boston, MA 02110-1301
 // USA
+
