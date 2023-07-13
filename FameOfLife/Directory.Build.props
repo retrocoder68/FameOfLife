@@ -1,0 +1,6 @@
+<Project>
+ <PropertyGroup>
+  <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">..\Build\obj\</BaseIntermediateOutputPath>
+</PropertyGroup>
+</Project>
+
