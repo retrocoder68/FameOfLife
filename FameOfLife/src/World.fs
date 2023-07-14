@@ -1,17 +1,10 @@
-// FameOfLife : Copyright (C) 2023 Skywalker<j.karlsson@retrocoder.se>
-module Main
+﻿// FameOfLife : Copyright (C) 2023 Skywalker<j.karlsson@retrocoder.se>
+module World
 
-open System.Windows.Forms
-
-open MainForm
-open World
-
-[<EntryPoint>]
-let main argv =
-    let world = World(10, 10)
-    use mainForm = new MainForm(world)
-    Application.Run(mainForm)
-    0
+type World(width:int, height:int) =
+    member val width:int = width
+    member val height:int = height
+    member val cells:bool[,] = Array2D.zeroCreate width height
 
 
 // License

@@ -4,14 +4,15 @@ module MainForm
 open System.Drawing
 open System.Windows.Forms
 
-type MainForm() as this =
+open World
+open WorldControl
+
+type MainForm(world:World) as this =
     inherit Form()
 
-    let label1 = new Label()
+    let worldControl = new WorldControl(world)
 
-    do this.initializeForm
-
-    member this.initializeForm =
+    do
         this.Name <- "MainForm"
         this.Text <- "FameOfLife"
         this.FormBorderStyle <- FormBorderStyle.FixedDialog
@@ -20,12 +21,11 @@ type MainForm() as this =
         this.StartPosition <- FormStartPosition.CenterScreen
         this.ClientSize <- new Size(800, 600)
 
-        // label1
-        label1.Text <- "Conway's Game of line written in F#"
-        label1.Location <- new Point(5,2)
-        label1.AutoSize <- true
+        // worldControl
+        worldControl.Location <- new Point(0,0)
+        worldControl.Size <- new Size(800, 600)
 
-        this.Controls.Add(label1)
+        this.Controls.Add(worldControl)
 
 
 // License
