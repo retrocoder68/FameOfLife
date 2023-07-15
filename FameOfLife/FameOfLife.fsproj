@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="src\Win32Native.fs" />
     <Compile Include="src\World.fs" />
     <Compile Include="src\WorldControl.fs" />
     <Compile Include="src\MainForm.fs" />
