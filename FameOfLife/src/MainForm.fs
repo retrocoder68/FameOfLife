@@ -7,10 +7,21 @@ open System.Windows.Forms
 open World
 open WorldControl
 
+open Win32Native
+
 type MainForm(world:World) as this =
     inherit Form()
 
     let worldControl = new WorldControl(world)
+
+    let whenIdle(e:System.EventArgs) =
+        while this.appIsIdle do
+            world.update()
+            this.Refresh()
+
+            // Slow down by waiting 100 ms
+            System.Threading.Thread.Sleep(100) |> ignore
+        ()
 
     do
         this.Name <- "MainForm"
@@ -24,8 +35,13 @@ type MainForm(world:World) as this =
         // worldControl
         worldControl.Location <- new Point(0,0)
         worldControl.Size <- new Size(800, 600)
-
         this.Controls.Add(worldControl)
+
+        Application.Idle.Add(whenIdle);
+
+    member this.appIsIdle =
+        let result = new User32.NativeMessage()
+        User32.PeekMessage(result, System.IntPtr.Zero, (uint)0, (uint)0, (uint)0) = 0;
 
 
 // License
