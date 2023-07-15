@@ -25,7 +25,7 @@ type WorldControl(world:World) as this =
         let cellHeight = this.Height / w.height
         let brush = new SolidBrush(Color.White)
         List.map (fun (x,y) ->
-            if w.cells.[x,y] then
+            if w.cells.[x + y*w.width] then
                 let rect = new Rectangle(cellWidth*x, cellHeight*y, cellWidth, cellHeight)
                 g.FillRectangle(brush, rect)
         ) [ for x in 0..w.width-1 do for y in 0..w.height-1 -> (x,y)] |> ignore
