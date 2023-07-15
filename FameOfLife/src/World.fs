@@ -17,7 +17,7 @@ type World(width:int, height:int) =
                     else
                         false) [for x in x-1..x+1 do for y in y-1..y+1 -> (x,y)])).Length
             if this.cells.[x + y*width] then neighborCount = 2 || neighborCount = 3
-            else neighborCount = 3) [for x in 0..width-1 do for y in 0..height-1 -> (x,y)]
+            else neighborCount = 3) [for y in 0..height-1 do for x in 0..width-1 -> (x,y)]
         this.cells <- newCells
 
 
