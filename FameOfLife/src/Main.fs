@@ -8,7 +8,7 @@ open World
 
 [<EntryPoint>]
 let main argv =
-    let world = World(10, 10)
+    let world = World(12, 9)
     use mainForm = new MainForm(world)
     Application.Run(mainForm)
     0
