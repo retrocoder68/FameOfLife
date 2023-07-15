@@ -2,7 +2,7 @@
 module World
 
 type World(width:int, height:int) =
-    let mutable _cells:List<bool> = [for x in 0..width-1 do for y in 0..height-1 -> true]
+    let mutable _cells:List<bool> = [for x in 0..width-1 do for y in 0..height-1 -> System.Random().Next(2) = 1]
 
     member val width:int = width
     member val height:int = height
